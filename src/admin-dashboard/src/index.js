@@ -1,21 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
 import Home from './containers/Home';
 import Dashboard from './containers/Dashboard';
 import { Router, Route, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from 'history';
 import * as serviceWorker from './serviceWorker';
+
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import theme from './styles/theme';
+import globalStyles from './styles/global';
+
+const GlobalStyle = createGlobalStyle`${globalStyles}`;
+
 
 const history = createBrowserHistory()
 
 ReactDOM.render((
-  <Router history={history}>
-    <Switch>
-      <Route exact path="/" name="Home" component={Home} />
-      <Route path="/dashboard" name="Dashboard" component={Dashboard} />
-    </Switch>
-  </Router>
+  <ThemeProvider theme={theme}>
+    <Router history={history}>
+      <GlobalStyle />
+      <Switch>
+        <Route exact path="/" name="Home" component={Home} />
+        <Route path="/dashboard" name="Dashboard" component={Dashboard} />
+      </Switch>
+    </Router>
+  </ThemeProvider>
 ), document.getElementById('root'));
 
 

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './index.scss';
 import styled from 'styled-components';
+import { color } from 'styled-system';
 
 const Button = styled.button`
   border: none;
-  color: #303030;
+  ${color}
 `
-
 class LoginForm extends Component {
   render() {
     return (
@@ -18,7 +17,7 @@ class LoginForm extends Component {
           <div>
             <input type="password" autoComplete="current-password" placeholder="Password" />
           </div>
-          <Button>Login</Button>
+          <Button color='text-primary' bg='primary'>Login</Button>
         </form>
       </div>
     );

@@ -2,7 +2,21 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import LoginForm from '../../components/Login';
 import RegisterForm from '../../components/Register';
-import './index.scss';
+import styled from 'styled-components';
+import { color } from 'styled-system';
+
+const StyledHome = styled.div`
+  ${color}
+  text-align: center;
+`
+const Content = styled.div`
+  ${color}
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
 class Home extends Component {
 
@@ -14,8 +28,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="text-center">
-        <header className="content">
+      <StyledHome bg='primary' >
+        <Content color='text-primary' bg='primary'>
           <h1>
             Welcome to SM
           </h1>
@@ -26,8 +40,8 @@ class Home extends Component {
             <Route path="/login" name="LoginForm" component={LoginForm} />
             <Route path="/register" name="Review" component={RegisterForm} />
           </Router>
-        </header>
-      </div>
+        </Content>
+      </StyledHome>
     );
   }
 }
