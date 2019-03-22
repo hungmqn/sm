@@ -1,0 +1,14 @@
+@import '../../helper.scss';
+
+.dashboard {
+  background-color: $color-accent;
+}
+
+.dashboard-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-primary;
+}

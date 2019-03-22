@@ -1,0 +1,17 @@
+{
+  "allowOrigin": ["*"],
+  "database": {
+    "username": "sasm",
+    "password": 1,
+    "database": "sm-dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": 5432
+  },
+  "server": {
+    "host": "localhost",
+    "port": 9420
+  },
+  "apiVersion": 1,
+  "secretCryptoToken": "v5ryz8xhyu0pWiRdgfe1sA4L5XvjurSu"
+}

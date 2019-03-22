@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  # api-server:
+  #   container_name: api-server
+  #   build: ./src/api-server
+  #   command: npm start
+  #   working_dir: /app/sm/src/api-server
+  #   ports:
+  #     - "9420:9420"
+  #   volumes: 
+  #     - ./src/api-server:/app/sm/src/api-server
+  postgres:
+    # build: ./src/postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: sasm
+      POSTGRES_PASSWORD: 1
+      POSTGRES_DB: sm-dev
+    ports:
+      - "5432:5432"
+    
