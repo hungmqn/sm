@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import { color } from 'styled-system';
 
-const Button = styled.button`
-  border: none;
-  ${color}
+import styled from 'styled-components';
+import { space } from 'styled-system';
+
+import Button from '../Button';
+import Input from '../Input';
+
+const StyledFormGroup = styled.div`
+  ${space}
 `
+
+
+
 class LoginForm extends Component {
   render() {
     return (
       <div>
         <form>
-          <div>
-            <input type="text" autoComplete="username" placeholder="Username" />
-          </div>
-          <div>
-            <input type="password" autoComplete="current-password" placeholder="Password" />
-          </div>
-          <Button color='text-primary' bg='primary'>Login</Button>
+          <StyledFormGroup mb='0.5rem'>
+            <Input type="text" autoComplete="username" placeholder="Username" />
+          </StyledFormGroup>
+          <StyledFormGroup mb='0.5rem'>
+            <Input type="password" autoComplete="current-password" placeholder="Password" />
+          </StyledFormGroup>
+          <Button type='button' bg='yellow'>Login</Button>
         </form>
       </div>
     );

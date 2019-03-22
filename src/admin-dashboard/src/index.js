@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './containers/Home';
-import Dashboard from './containers/Dashboard';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import * as serviceWorker from './serviceWorker';
+
+import Home from './containers/Home';
+import Dashboard from './containers/Dashboard';
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import theme from './styles/theme';

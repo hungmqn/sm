@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import Header from '../../components/Header';
+import Button from '../../components/Button';
 import styled from 'styled-components';
 import { color } from 'styled-system';
 
@@ -20,11 +22,14 @@ function Dashboard() {
   const [count, setCount] = useState(0);
 
   return (
-    <StyledDashboard bg='accent'>
-      <Content color='text-primary'>
+    <StyledDashboard bg='pink'>
+      <Content color='black'>
         <Header></Header>
         <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>
+        <Button bg='green' onClick={() => setCount(count + 1)}>
+          Increasemento
+        </Button>
+        <button bg='green' onClick={() => setCount(count + 1)}>
           Increasemento
         </button>
       </Content>

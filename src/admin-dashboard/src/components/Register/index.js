@@ -1,21 +1,33 @@
 import React, { Component } from 'react';
 
-class LoginForm extends Component {
+import styled from 'styled-components';
+import { space } from 'styled-system';
+
+import Button from '../Button';
+import Input from '../Input';
+
+const StyledFormGroup = styled.div`
+  ${space}
+`
+
+
+
+class RegisterForm extends Component {
   render() {
     return (
       <div>
         <form>
-          <div>
-            <input type="text" autoComplete="username" placeholder="Username" />
-          </div>
-          <div>
-            <input type="password" autoComplete="current-password" placeholder="Password" />
-          </div>
-          <button>Register</button>
+          <StyledFormGroup mb='0.5rem'>
+            <Input type="text" autoComplete="username" placeholder="Username" />
+          </StyledFormGroup>
+          <StyledFormGroup mb='0.5rem'>
+            <Input type="password" autoComplete="current-password" placeholder="Password" />
+          </StyledFormGroup>
+          <Button type='button' bg='yellow'>Register</Button>
         </form>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default RegisterForm;

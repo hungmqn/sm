@@ -1,11 +1,17 @@
 import React from 'react';
-import './index.scss';
+import styled from 'styled-components';
+
+const StyledHeader = styled.div`
+  display: block;
+  text-align: center;
+`
+
 
 function Header() {
   return (
-    <div className="dashboard-header">
+    <StyledHeader>
       <h1>Admin Dashboard</h1>
-    </div>
+    </StyledHeader>
   );
 }
 

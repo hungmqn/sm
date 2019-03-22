@@ -28,17 +28,17 @@ class Home extends Component {
 
   render() {
     return (
-      <StyledHome bg='primary' >
-        <Content color='text-primary' bg='primary'>
+      <StyledHome bg='green' >
+        <Content color='black'>
           <h1>
             Welcome to SM
           </h1>
           <Router>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
             <Route path="/" exact component={LoginForm} />
             <Route path="/login" name="LoginForm" component={LoginForm} />
             <Route path="/register" name="Review" component={RegisterForm} />
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
           </Router>
         </Content>
       </StyledHome>
