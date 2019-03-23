@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
 import LoginForm from '../../components/Login';
 import RegisterForm from '../../components/Register';
 import styled from 'styled-components';
@@ -29,17 +30,13 @@ class Home extends Component {
   render() {
     return (
       <StyledHome bg='green' >
+        <Navbar>
+        </Navbar>
         <Content color='black'>
-          <h1>
-            Welcome to SM
-          </h1>
-          <Router>
-            <Route path="/" exact component={LoginForm} />
-            <Route path="/login" name="LoginForm" component={LoginForm} />
-            <Route path="/register" name="Review" component={RegisterForm} />
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </Router>
+          <h1>SM</h1>
+          <Route exact path="/" component={LoginForm} />
+          <Route path="/login" name="LoginForm" component={LoginForm} />
+          <Route path="/register" name="Review" component={RegisterForm} />
         </Content>
       </StyledHome>
     );

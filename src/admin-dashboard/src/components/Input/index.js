@@ -5,6 +5,7 @@ import { space, width, fontSize, color,  } from 'styled-system';
 const StyledInput = styled.input`
   border: none;
   border-bottom: 0.5px white solid;
+  outline: none;
   ${space}
   ${width}
   ${fontSize}

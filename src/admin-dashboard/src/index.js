@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
 import Home from './containers/Home';
 import Dashboard from './containers/Dashboard';
+import ErrorPage from './containers/ErrorPage';
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
@@ -14,16 +14,18 @@ import globalStyles from './styles/global';
 const GlobalStyle = createGlobalStyle`${globalStyles}`;
 
 
-const history = createBrowserHistory()
-
 ReactDOM.render((
   <ThemeProvider theme={theme}>
-    <Router history={history}>
+    <Router>
       <GlobalStyle />
       <Switch>
-        <Route exact path="/" name="Home" component={Home} />
         <Route path="/dashboard" name="Dashboard" component={Dashboard} />
+        <Route path="/" name="Home" component={Home} />
+        <Route component={ErrorPage} />
       </Switch>
+      {/* <Route path="/dashboard" name="Dashboard" component={Dashboard} />
+      <Route path="/" name="Home" component={Home} />
+      <Route component={ErrorPage} /> */}
     </Router>
   </ThemeProvider>
 ), document.getElementById('root'));
