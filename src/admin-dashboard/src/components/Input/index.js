@@ -11,6 +11,21 @@ const StyledInput = styled.input`
   ${fontSize}
   ${color}
 `
-export default function Input({ autoComplete = 'auto-complete', type = 'text', placeholder = '...', width = '100%', p = '0.5rem', fontSize = '1rem', color = 'black', bg = 'transparent' }) {
-  return <StyledInput autoComplete={autoComplete} type={type} placeholder={placeholder} width={width} p={p} fontSize={fontSize} color={color} bg={bg} />
-};
+
+const Input = props => {
+  return <StyledInput {...props} />
+}
+
+Input.defaultProps = {
+  autoComplete: 'auto-complete',
+  type: 'text',
+  placeholder: '...',
+  width: '100%',
+  p: '0.5rem',
+  fontSize: '1rem',
+  color: 'black',
+  bg: 'transparent',
+}
+
+export default Input;
+

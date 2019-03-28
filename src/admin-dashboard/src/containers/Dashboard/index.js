@@ -17,7 +17,7 @@ const Content = styled.div`
   justify-content: center;
 `
 
-function Dashboard() {
+function Dashboard(props) {
   const [count, setCount] = useState(0);
 
   return (
@@ -28,10 +28,14 @@ function Dashboard() {
         <button bg='green' onClick={() => setCount(count + 1)}>
           Increasemento
         </button>
+        {props.ok}
       </Content>
     </StyledDashboard>
   );
 }
 
+Dashboard.defaultProps = {
+  ok: 'testDefaultProps'
+}
 
 export default Dashboard;

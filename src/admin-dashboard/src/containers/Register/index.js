@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { space } from 'styled-system';
 
-import Button from '../Button';
-import Input from '../Input';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
 
 const StyledFormGroup = styled.div`
   ${space}
@@ -12,7 +12,7 @@ const StyledFormGroup = styled.div`
 
 
 
-class LoginForm extends Component {
+class RegisterForm extends Component {
   render() {
     return (
       <div>
@@ -23,11 +23,11 @@ class LoginForm extends Component {
           <StyledFormGroup mb='0.5rem'>
             <Input type="password" autoComplete="current-password" placeholder="Password" />
           </StyledFormGroup>
-          <Button type='button' bg='yellow'>Login</Button>
+          <Button type='button' bg='yellow'>Register</Button>
         </form>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default RegisterForm;

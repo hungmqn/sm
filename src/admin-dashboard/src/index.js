@@ -1,33 +1,53 @@
-import React from 'react';
+import React, {lazy, Suspense }  from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import * as serviceWorker from './serviceWorker';
+import { Router } from '@reach/router';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-import Home from './containers/Home';
-import Dashboard from './containers/Dashboard';
-import ErrorPage from './containers/ErrorPage';
+import * as serviceWorker from './serviceWorker';
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import globalStyles from './styles/global';
 
+import userReducer from './store/user/user.reducer';
+
 const GlobalStyle = createGlobalStyle`${globalStyles}`;
 
+const Home = lazy(() => import('./containers/Home'))
+const Dashboard = lazy(() => import('./containers/Dashboard'))
+const LoginForm = lazy(() => import('./containers/Login'))
+const RegisterForm = lazy(() => import('./containers/Register'))
+const ErrorPage = lazy(() => import('./containers/ErrorPage'))
+
+const store = createStore(userReducer);
 
 ReactDOM.render((
-  <ThemeProvider theme={theme}>
-    <Router>
-      <GlobalStyle />
-      <Switch>
-        <Route path="/dashboard" name="Dashboard" component={Dashboard} />
-        <Route path="/" name="Home" component={Home} />
-        <Route component={ErrorPage} />
-      </Switch>
-      {/* <Route path="/dashboard" name="Dashboard" component={Dashboard} />
-      <Route path="/" name="Home" component={Home} />
-      <Route component={ErrorPage} /> */}
-    </Router>
-  </ThemeProvider>
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Suspense maxDuration={1500} fallback={<h1>Loading...</h1>}>
+          <Router>
+            <Dashboard path='dashboard'/>
+            <Home path='/'>
+              <LoginForm path="/login"/>
+              <RegisterForm path="/register"/>
+            </Home>
+            <ErrorPage default/>
+          </Router>
+        </Suspense>
+        <GlobalStyle/>
+      </div>
+    </ThemeProvider>
+  </Provider>
+    // <Suspense maxDuration={1500} fallback={<h1>Loading...</h1>}>
+    //   <Provider store={store}>
+    //   <Home path='/'>
+    //     <LoginForm path="/login"/>
+    //     <RegisterForm path="/register"/>
+    //   </Home>
+    //   </Provider>
+    // </Suspense>
 ), document.getElementById('root'));
 
 
