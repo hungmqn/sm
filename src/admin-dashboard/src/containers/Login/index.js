@@ -21,22 +21,41 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return { 
-    login: event => dispatch(actionCreator.login({ username: 'someone', password: 'something'}))
+    login: event => dispatch(actionCreator.login({ username: 'username', password: 'password' }))
   }
 }
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangPassword = this.onChangPassword.bind(this);
+  }
+
+  state = {
+    username: '',
+    password: ''
+  }
+
+  onChangeUsername(event) {
+    this.setState({ username: event.target.value });
+  }
+
+  onChangPassword(event) {
+    this.setState({ password: event.target.value });
+  }
+
   render() {
-    const { user, login } = this.props;
-    console.log(user)
+    const { login } = this.props;
     return (
       <div>
         <form>
           <StyledFormGroup mb='0.5rem'>
-            <Input type="text" autoComplete="username" placeholder="Username" />
+            <Input type="text" autoComplete="username" value={this.state.username} onChange={this.onChangeUsername} placeholder="Username" />
           </StyledFormGroup>
           <StyledFormGroup mb='0.5rem'>
-            <Input type="password" autoComplete="current-password" placeholder="Password" />
+            <Input type="password" autoComplete="current-password" value={this.state.password} onChange={this.onChangPassword} placeholder="Password" />
           </StyledFormGroup>
           <Button type='button' onClick={login} bg='yellow'>Login</Button>
         </form>
