@@ -12,9 +12,11 @@ const routes = require('./routes');
 const middlewares = require('./middlewares');
 
 app.use(morgan('dev'));
-app.use(cors({
-  origin: ['*']
-}));
+// app.use(cors({
+//   origin: ['*'],
+//   credentials: true
+// }));
+app.use(cors());
 app.use(bodyParser.json({limit: '500kb'}));
 app.use(bodyParser.urlencoded({
   extended: true,

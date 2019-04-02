@@ -9,7 +9,7 @@ export const types = {
   REGISTER_ERROR: 'REGISTER_ERROR',
 }
 
-export const actionCreator = {
+export const actions = {
   login: createAction(types.LOGIN),
   register: createAction(types.REGISTER),
 }

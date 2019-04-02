@@ -13,13 +13,13 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('user', [
       {
-        username: 'amaithi',
-        password: hashPassword('amaithi', '741852963'),
+        username: 'sadmin',
+        password: hashPassword('sadmin', '123456'),
         role: 1,
       },
       {
-        username: 'mmaihoang',
-        password: hashPassword('smaihoang', '147258369'),
+        username: 'mnormal',
+        password: hashPassword('mnormal', '123456'),
         role: 2,
       }
     ], {

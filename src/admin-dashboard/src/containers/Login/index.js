@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { navigate } from '@reach/router';
 
-import { actionCreator } from '../../store/user/user.action';
+import { user } from '../../store/actions';
 
 import styled from 'styled-components';
 import { space } from 'styled-system';
@@ -13,24 +14,12 @@ const StyledFormGroup = styled.div`
   ${space}
 `
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return { 
-    login: event => dispatch(actionCreator.login({ username: 'username', password: 'password' }))
-  }
-}
-
 class LoginForm extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangPassword = this.onChangPassword.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   state = {
@@ -38,30 +27,46 @@ class LoginForm extends Component {
     password: ''
   }
 
-  onChangeUsername(event) {
-    this.setState({ username: event.target.value });
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
-  onChangPassword(event) {
-    this.setState({ password: event.target.value });
+  submitForm(event) {
+    const { login } = this.props;
+    const { username, password } = this.state;
+    login(username, password);
   }
 
   render() {
-    const { login } = this.props;
+    const { user } = this.props;
+    if (user.id && user.token) {
+      navigate('/dashboard')
+    }
     return (
       <div>
         <form>
           <StyledFormGroup mb='0.5rem'>
-            <Input type="text" autoComplete="username" value={this.state.username} onChange={this.onChangeUsername} placeholder="Username" />
+            <Input type="text" autoComplete="username" value={this.state.username} onChange={this.handleChange} name="username" placeholder="Username" />
           </StyledFormGroup>
           <StyledFormGroup mb='0.5rem'>
-            <Input type="password" autoComplete="current-password" value={this.state.password} onChange={this.onChangPassword} placeholder="Password" />
+            <Input type="password" autoComplete="current-password" value={this.state.password} onChange={this.handleChange} name="password" placeholder="Password" />
           </StyledFormGroup>
-          <Button type='button' onClick={login} bg='yellow'>Login</Button>
+          <Button type='button' onClick={this.submitForm} bg='yellow'>Login</Button>
         </form>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  login: (username, password) => dispatch(user.actions.login({ username: username, password: password }))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

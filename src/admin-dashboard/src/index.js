@@ -2,15 +2,13 @@ import React, {lazy, Suspense }  from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from '@reach/router';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-
 import * as serviceWorker from './serviceWorker';
+
+import store from './store';
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import globalStyles from './styles/global';
-
-import userReducer from './store/user/user.reducer';
 
 const GlobalStyle = createGlobalStyle`${globalStyles}`;
 
@@ -19,8 +17,6 @@ const Dashboard = lazy(() => import('./containers/Dashboard'))
 const LoginForm = lazy(() => import('./containers/Login'))
 const RegisterForm = lazy(() => import('./containers/Register'))
 const ErrorPage = lazy(() => import('./containers/ErrorPage'))
-
-const store = createStore(userReducer);
 
 ReactDOM.render((
   <Provider store={store}>
