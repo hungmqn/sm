@@ -2,6 +2,7 @@ import React, {lazy, Suspense }  from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from '@reach/router';
 import { Provider } from 'react-redux';
+
 import * as serviceWorker from './serviceWorker';
 
 import store from './store';
@@ -11,6 +12,7 @@ import theme from './styles/theme';
 import globalStyles from './styles/global';
 
 const GlobalStyle = createGlobalStyle`${globalStyles}`;
+
 
 const Home = lazy(() => import('./containers/Home'))
 const Dashboard = lazy(() => import('./containers/Dashboard'))
