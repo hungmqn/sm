@@ -1,8 +1,10 @@
+require('dotenv').config();
 require('./global');
 const http = require('http');
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const app = express();
 
@@ -16,7 +18,21 @@ app.use(morgan('dev'));
 //   origin: ['*'],
 //   credentials: true
 // }));
+const whitelist = ['http://firstdomain.com', 'http://seconddomain.com']
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+app.use(helmet());
 app.use(cors());
+// app.use(cors(corsOptions));
+
 app.use(bodyParser.json({limit: '500kb'}));
 app.use(bodyParser.urlencoded({
   extended: true,

@@ -39,17 +39,8 @@ export default function* saga() {
    yield takeEvery('REGISTER', handleRegister);
 }
 
-// const registerApi = async (payload) => {
-//    const data = await Api.post(`auth/register`, payload);
-//    return data;
-// };
+export { handleLogin };
+export { handleRegister };
 
-
-// const register = function* (action) {
-//    try {
-//       const data = yield call(Api.post(`auth/register`, action.payload));
-//       yield put({type: "LOGIN_SUCCESS", data})
-//    } catch (error) {
-//       yield put({type: "LOGIN_ERROR", error})
-//    }
-// }
+export { login };
+export { register };

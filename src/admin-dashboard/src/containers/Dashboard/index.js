@@ -34,7 +34,7 @@ function Dashboard(props) {
       <Content color='black'>
         <Header></Header>
         <p>You clicked {count} times</p>
-        <button bg='green' onClick={() => setCount(count + 1)}>
+        <button id='counter' bg='green' onClick={() => setCount(count + 1)}>
           Increasemento
         </button>
       </Content>
